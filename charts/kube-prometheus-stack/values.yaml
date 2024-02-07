@@ -182,7 +182,21 @@ defaultRules:
 
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
-additionalPrometheusRulesMap: {}
+additionalPrometheusRulesMap:
+  kube-prometheus-stack-argocd:
+    groups:
+    - name: argocd
+      rules:
+        - alert: NumberOfReplicasTooLow
+          expr: >-
+            kube_deployment_spec_replicas{deployment="argo-cd-argocd-repo-server"}
+            < 2
+          for: 60s
+          labels:
+            cluster_id: c-m-ltkfvwlw
+            cluster_name: groovecluster
+            namespace: argocd
+            severity: none
 #  rule-name:
 #    groups:
 #    - name: my_group
