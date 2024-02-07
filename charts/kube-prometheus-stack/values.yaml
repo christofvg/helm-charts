@@ -196,7 +196,7 @@ additionalPrometheusRulesMap:
             cluster_id: c-m-ltkfvwlw
             cluster_name: groovecluster
             namespace: argocd
-            severity: none
+            severity: critical
 #  rule-name:
 #    groups:
 #    - name: my_group
